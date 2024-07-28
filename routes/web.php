@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SkillController;
+use App\Http\Controllers\ProfessionController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -22,5 +23,7 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/skills', [SkillController::class, 'index']);
 Route::post('/skills/upload', [SkillController::class, 'store']);
+
+Route::get('/professions', [ProfessionController::class, 'index']);
 
 require __DIR__.'/auth.php';
