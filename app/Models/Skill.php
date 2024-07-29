@@ -9,4 +9,5 @@ use App\Http\Controllers\SkillController;
 class Skill extends Model
 {
     use HasFactory;
+    protected $guarded = ['id'];
 }

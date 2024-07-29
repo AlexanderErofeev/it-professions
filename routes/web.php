@@ -22,8 +22,15 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/skills', [SkillController::class, 'index']);
-Route::post('/skills/upload', [SkillController::class, 'store']);
+Route::middleware('auth')->group(function () {
+    Route::get('/skills/create', [SkillController::class, 'create'])->name('skills.create');
+    Route::post('/skills', [SkillController::class, 'store'])->name('skills.store');
+});
 
 Route::get('/professions', [ProfessionController::class, 'index']);
 
 require __DIR__.'/auth.php';
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
