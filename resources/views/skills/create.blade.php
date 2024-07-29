@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="container">
-        <h2>Навыки</h2>
+        <h2>Добавление навыка</h2>
         <form action="{{ route('skills.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
