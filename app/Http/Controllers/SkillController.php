@@ -77,6 +77,7 @@ class SkillController extends Controller
             'description' => $request->get('description'),
             'image_path' => $image_path,
         ]));
+
         return redirect()->route('skills.index');
     }
     /**
