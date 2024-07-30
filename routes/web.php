@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\ProfessionController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 
 Route::get('/', function () {
@@ -21,11 +22,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/skills', [SkillController::class, 'index']);
 Route::middleware('auth')->group(function () {
-    Route::get('/skills/create', [SkillController::class, 'create'])->name('skills.create');
+    Route::get('skills/create', [SkillController::class, 'create'])->name('skills.create');
     Route::post('/skills', [SkillController::class, 'store'])->name('skills.store');
+    Route::get('/skills/{skill:slug}/edit', [SkillController::class, 'edit'])->name('skills.edit');
+    Route::put('/skills/{skill:slug}', [SkillController::class, 'update'])->name('skills.update');
 });
+Route::get('/skills', [SkillController::class, 'index'])->name('skills.index');
+Route::get('/skills/{skill:slug}', [SkillController::class, 'show'])->name('skills.show');
 
 Route::get('/professions', [ProfessionController::class, 'index']);
 

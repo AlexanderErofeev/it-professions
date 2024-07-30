@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 use App\Models\Skill;
+
 
 class SkillController extends Controller
 {
@@ -31,9 +34,7 @@ class SkillController extends Controller
             'title' => 'required',
             'image_path' => 'required|image|max:2048',
         ]);
-
         $imagePath = $request->file('image_path')->store('public/images/skills');
-        dump($request->file('image_path'));
         $skill = new Skill([
             'title' => $request->get('title'),
             'slug' => $request->get('slug'),
@@ -45,21 +46,19 @@ class SkillController extends Controller
 
         return redirect('/skills')->with('success', 'Skills create successfully');
     }
-
     /**
      * Display the specified resource.
      */
     public function show(Skill $skill)
     {
-        //
+        return view('skills.skill', compact('skill'));
     }
-
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(Skill $skill)
     {
-        //
+        return view('skills.edit', compact('skill'));
     }
 
     /**
@@ -67,7 +66,18 @@ class SkillController extends Controller
      */
     public function update(Request $request, Skill $skill)
     {
-        //
+        $image_path = $request->file('image_path');
+        if (!is_null($image_path))
+            Storage::delete($skill->image_path);
+        $image_path = $image_path?->store('public/images/skills');
+        $skill->update(array_filter([
+            'title' => $request->get('title'),
+            'slug' => $request->get('slug'),
+            'short_description' => $request->get('short_description'),
+            'description' => $request->get('description'),
+            'image_path' => $image_path,
+        ]));
+        return redirect()->route('skills.index');
     }
     /**
      * Remove the specified resource from storage.

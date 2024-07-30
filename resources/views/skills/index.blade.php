@@ -10,10 +10,8 @@
                     <div class="card mb-4">
                         <img src="{{ Storage::url($skill->image_path) }}" alt="{{ $skill->title }}" class="card-img-top">
                         <div class="card-body">
-                            <h5 class="card-title">{{ $skill->title }}</h5>
-                            <p class="card-text">{{ $skill->slug }}</p>
+                            <a href="{{ route('skills.show', $skill) }}"><h5 class="card-title">{{ $skill->title }}</h5></a>
                             <p class="card-text">{{ $skill->short_description }}</p>
-                            <p class="card-text">{{ $skill->description }}</p>
                         </div>
                     </div>
                 </div>
