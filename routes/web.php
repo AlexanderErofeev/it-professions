@@ -31,7 +31,15 @@ Route::middleware('auth')->group(function () {
 Route::get('/skills', [SkillController::class, 'index'])->name('skills.index');
 Route::get('/skills/{skill:slug}', [SkillController::class, 'show'])->name('skills.show');
 
-Route::get('/professions', [ProfessionController::class, 'index']);
+
+Route::middleware('auth')->group(function () {
+    Route::get('professions/create', [ProfessionController::class, 'create'])->name('professions.create');
+    Route::post('/professions', [ProfessionController::class, 'store'])->name('professions.store');
+    Route::get('/professions/{profession:slug}/edit', [ProfessionController::class, 'edit'])->name('professions.edit');
+    Route::put('/professions/{profession:slug}', [ProfessionController::class, 'update'])->name('professions.update');
+});
+Route::get('/professions', [ProfessionController::class, 'index'])->name('professions.index');
+Route::get('/professions/{profession:slug}', [ProfessionController::class, 'show'])->name('professions.show');
 
 require __DIR__.'/auth.php';
 
