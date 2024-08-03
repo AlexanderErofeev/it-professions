@@ -18,6 +18,7 @@
                 </div>
                 <div><a href="{{ route('professions.index') }}">Профессии</a></div>
                 <div><a href="{{ route('skills.index') }}">Навыки</a></div>
+
             </div>
 
             <!-- Settings Dropdown -->
