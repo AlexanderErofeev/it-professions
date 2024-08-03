@@ -27,6 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/skills', [SkillController::class, 'store'])->name('skills.store');
     Route::get('/skills/{skill:slug}/edit', [SkillController::class, 'edit'])->name('skills.edit');
     Route::put('/skills/{skill:slug}', [SkillController::class, 'update'])->name('skills.update');
+    Route::delete('/skills/{skill:slug}', [SkillController::class, 'destroy'])->name('skills.delete');
 });
 Route::get('/skills', [SkillController::class, 'index'])->name('skills.index');
 Route::get('/skills/{skill:slug}', [SkillController::class, 'show'])->name('skills.show');
