@@ -6,14 +6,67 @@
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+
 body
 {
-    font-family: 'Montserrat', sans-serif;
-
+    background-image: url('/resources/images/background.webp');
 }
-h2
+.navbar
 {
-    font-size: xx-large;
-    color: #0B3B55;
-    font-weight: 500;
+    border-bottom: #ffd2a9 solid 1px;
+    li:hover
+    {
+        opacity: 0.7;
+    }
+}
+.navbar-brand
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .logo-img
+    {
+        height: 60px;
+    }
+    .logo-name
+    {
+        height: 25px;
+    }
+}
+.container
+{
+    h1
+    {
+        margin-top: 2rem;
+    }
+    article
+    {
+        padding-top: 1rem;
+    }
+}
+button.delete
+{
+    border: none;
+    background-color: unset;
+}
+.icon
+{
+    font-size: x-large;
+    color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 0.5));
+}
+.admin.card-footer
+{
+    display: flex;
+    justify-content: space-between;
+}
+.card-img-top
+{
+    padding: 2rem 2rem 0 2rem;
+    height: 200px;
+    object-fit: contain;
+    width: 100%;
+}
+.card-title
+{
+    text-decoration: unset;
 }
