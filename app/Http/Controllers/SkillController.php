@@ -51,7 +51,7 @@ class SkillController extends Controller
      */
     public function show(Skill $skill)
     {
-        return view('skills.skill', compact('skill'));
+        return view('skills.show', compact('skill'));
     }
     /**
      * Show the form for editing the specified resource.
