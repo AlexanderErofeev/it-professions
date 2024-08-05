@@ -38,6 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/professions', [ProfessionController::class, 'store'])->name('professions.store');
     Route::get('/professions/{profession:slug}/edit', [ProfessionController::class, 'edit'])->name('professions.edit');
     Route::put('/professions/{profession:slug}', [ProfessionController::class, 'update'])->name('professions.update');
+    Route::delete('/professions/{profession:slug}', [ProfessionController::class, 'destroy'])->name('professions.delete');
 });
 Route::get('/professions', [ProfessionController::class, 'index'])->name('professions.index');
 Route::get('/professions/{profession:slug}', [ProfessionController::class, 'show'])->name('professions.show');
