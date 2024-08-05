@@ -16,11 +16,11 @@
             </div>
             <div class="form-group">
                 <label for="short_description">Короткое описание</label>
-                <textarea name="short_description" id="short_description" class="form-control"></textarea>
+                <textarea name="short_description ckeditor" id="short_description" class="form-control"></textarea>
             </div>
             <div class="form-group">
                 <label for="description">Полное описание</label>
-                <textarea name="description" id="description" class="form-control"></textarea>
+                <textarea name="description ckeditor" id="description" class="form-control"></textarea>
             </div>
             <div class="form-group">
                 <label for="image_path">Изображение</label>

@@ -7,7 +7,7 @@
             <!-- Blog entries-->
             <div class="col-lg-12">
                 <h1>{{ $skill->title }}</h1>
-                <p>{{ $skill->description }}</p>
+                <p>{!! $skill->description !!}</p>
             </div>
         </div>
     </div>

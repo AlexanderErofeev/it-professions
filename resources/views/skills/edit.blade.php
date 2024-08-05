@@ -20,8 +20,8 @@
                 <textarea name="short_description" id="short_description" class="form-control">{{ $skill->short_description }}</textarea>
             </div>
             <div class="form-group">
-                <label for="description">Полное описание</label>
-                <textarea name="description" id="description" class="form-control">{{ $skill->description }}</textarea>
+                <label for="ckeditor">Полное описание</label>
+                <textarea name="description" id="ckeditor" class="form-control">{{ $skill->description }}</textarea>
             </div>
             <div class="form-group">
                 <label for="image_path">Изображение</label>
