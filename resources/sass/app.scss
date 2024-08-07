@@ -70,3 +70,32 @@ button.delete
 {
     text-decoration: unset;
 }
+img
+{
+    max-width: 100%;
+    height: auto;
+}
+.image-style-align-right
+{
+    float: right;
+}
+.image-style-align-left
+{
+    float: left;
+}
+.image-style-align-center
+{
+    margin:auto;
+}
+.image-style-block-align-right
+{
+    margin-left:auto;
+}
+.image-style-block-align-left
+{
+    margin-right:auto;
+}
+figcaption
+{
+    text-align: center;
+}

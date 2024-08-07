@@ -3,6 +3,7 @@ import '@ckeditor/ckeditor5-build-classic/build/translations/ru'
 import { Alignment } from '@ckeditor/ckeditor5-alignment';
 import { Autoformat } from '@ckeditor/ckeditor5-autoformat';
 import { Autosave } from '@ckeditor/ckeditor5-autosave';
+import { BalloonEditor } from '@ckeditor/ckeditor5-editor-balloon';
 import { Bold, Code, Italic, Strikethrough, Subscript, Superscript, Underline } from '@ckeditor/ckeditor5-basic-styles';
 import { BlockQuote } from '@ckeditor/ckeditor5-block-quote';
 import { Essentials } from '@ckeditor/ckeditor5-essentials';
@@ -12,7 +13,8 @@ import {
     ImageCaption,
     ImageStyle,
     ImageToolbar,
-    ImageUpload
+    ImageUpload,
+    ImageResize,
 } from '@ckeditor/ckeditor5-image';
 import { Indent } from '@ckeditor/ckeditor5-indent';
 import { Link } from '@ckeditor/ckeditor5-link';
@@ -22,6 +24,7 @@ import { Paragraph } from '@ckeditor/ckeditor5-paragraph';
 import { PasteFromOffice } from '@ckeditor/ckeditor5-paste-from-office';
 import { Table, TableToolbar } from '@ckeditor/ckeditor5-table';
 import { TextTransformation } from '@ckeditor/ckeditor5-typing';
+import { SimpleUploadAdapter } from '@ckeditor/ckeditor5-upload/';
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -29,6 +32,7 @@ ClassicEditor.builtinPlugins = [
     Alignment,
     Autoformat,
     Autosave,
+    BalloonEditor,
     BlockQuote,
     Bold,
     Code,
@@ -39,6 +43,7 @@ ClassicEditor.builtinPlugins = [
     ImageStyle,
     ImageToolbar,
     ImageUpload,
+    ImageResize,
     Indent,
     Italic,
     Link,
@@ -46,6 +51,7 @@ ClassicEditor.builtinPlugins = [
     MediaEmbed,
     Paragraph,
     PasteFromOffice,
+    SimpleUploadAdapter,
     Strikethrough,
     Subscript,
     Superscript,
@@ -56,11 +62,11 @@ ClassicEditor.builtinPlugins = [
 ];
 
 ClassicEditor.defaultConfig = {
+    balloonToolbar: ['bold', 'italic', '|', 'link'],
     toolbar: {
         items: [
             'alignment',
             'heading',
-            'ckbox',
             '|',
             'bold',
             'code',
@@ -73,7 +79,6 @@ ClassicEditor.defaultConfig = {
             'bulletedList',
             'numberedList',
             '|',
-            'outdent',
             'indent',
             '|',
             'imageUpload',
@@ -86,12 +91,59 @@ ClassicEditor.defaultConfig = {
     },
     language: 'ru',
     image: {
+        // Configure the available styles.
+        styles: [
+            'alignLeft', 'alignCenter', 'alignRight', 'alignBlockLeft', 'alignBlockRight'
+        ],
+        // Configure the available image resize options.
+        resizeOptions: [
+            {
+                name: 'imageResize:original',
+                label: 'Original',
+                value: null
+            },
+            {
+                name: 'imageResize:25',
+                label: '25%',
+                value: '25'
+            },
+            {
+                name: 'imageResize:50',
+                label: '50%',
+                value: '50'
+            },
+            {
+                name: 'imageResize:75',
+                label: '75%',
+                value: '75'
+            }
+        ],
         toolbar: [
             'imageTextAlternative',
             'toggleImageCaption',
-            'imageStyle:inline',
-            'imageStyle:block',
-            'imageStyle:side'
+            '|',
+            'imageResize',
+            '|',
+            {
+                name: 'Выравнивание в строке',
+                title: 'Выравнивание в строке',
+                items: [
+                    'imageStyle:alignBlockLeft',
+                    'imageStyle:alignCenter',
+                    'imageStyle:alignBlockRight',
+                ],
+                defaultItem: 'imageStyle:alignBlockLeft'
+            },
+            '|',
+            {
+                name: 'Обтекание текста',
+                title: 'Обтекание текста',
+                items: [
+                    'imageStyle:alignLeft',
+                    'imageStyle:alignRight',
+                ],
+                defaultItem: 'imageStyle:alignLeft'
+            },
         ]
     },
     table: {
@@ -103,6 +155,12 @@ ClassicEditor.defaultConfig = {
     },
     mediaEmbed: {
         previewsInData: true
+    },
+    simpleUpload: {
+        uploadUrl: '/upload_img',
+        headers: {
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+        }
     }
 };
 
@@ -118,3 +176,4 @@ ClassicEditor
     } );
 */
 ClassicEditor.create( document.querySelector( '#ckeditor' ));
+
