@@ -18,9 +18,8 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     @vite(['resources/js/ckeditor.config.js'])
 </head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white">
+<body class="d-flex flex-column min-vh-100">
+    <nav class="navbar navbar-expand-md navbar-light bg-white">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img class="logo-img" src="{{ Vite::asset('resources/images/logo_img_1.svg') }}" alt="Логотип сайта Найти в IT" />
@@ -75,10 +74,27 @@
                 </div>
             </div>
         </nav>
-
-        <main class="py-4">
+    <main class="py-4">
             @yield('content')
         </main>
-    </div>
+    <footer class="mt-auto">
+            <div class="container">
+                <div class="row justify-content-between">
+                    <div class="col-4">
+                        <div><img class="logo-img" src="{{ Vite::asset('resources/images/logo_img_1.svg') }}" alt="Логотип сайта Найти в IT" />
+                        <img class="logo-name" src="{{ Vite::asset('resources/images/logo_name_footer.svg') }}" alt="Найти в IT" /></div>
+                        <div class="py-3">Найти в IT - это сайт, который поможет пользователю ответить на все его вопросы о профессиях IT-сферы.<br />
+                        Найди себя в IT
+                        </div>
+                        <div class="copyright">© IT-professions, 2022-{{ now()->year }}</div>
+                    </div>
+                    <div class="col-3">
+                        <h3>Контакты:</h3>
+                        <div class="py-3"><span class="text-primary">E-mail:</span> info@it-professions.ru</div>
+                        <button type="button" class="btn btn-primary">Оставить отзыв</button>
+                    </div>
+                </div>
+            </div>
+        </footer>
 </body>
 </html>

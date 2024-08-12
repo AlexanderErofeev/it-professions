@@ -7,10 +7,40 @@
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
 
+.btn-primary
+{
+    @include button-variant($btn-color, $btn-color, white, white, $btn-color, $btn-color);
+}
+.btn-outline-primary
+{
+    @include button-outline-variant($btn-color, white, $btn-color, $btn-color);
+}
+
 body
 {
     background-image: url('/resources/images/background.webp');
 }
+footer
+{
+    background-color: #286485;
+    color:white;
+    padding: 2rem 0;
+    .copyright
+    {
+        color: #94c4de;
+        font-size: $font-size-sm;
+    }
+    .about-us
+    {
+        margin: 1rem 0;
+    }
+    .btn-primary
+    {
+        @include button-variant(white, $btn-color, $btn-color, $btn-color, $btn-color, white);
+        width: 100%;
+    }
+}
+
 .navbar
 {
     border-bottom: #ffd2a9 solid 1px;
@@ -19,19 +49,19 @@ body
         opacity: 0.7;
     }
 }
+.logo-img
+{
+    height: 60px;
+}
+.logo-name
+{
+    height: 25px;
+}
 .navbar-brand
 {
     display: flex;
     align-items: center;
     justify-content: center;
-    .logo-img
-    {
-        height: 60px;
-    }
-    .logo-name
-    {
-        height: 25px;
-    }
 }
 .container
 {
@@ -51,7 +81,7 @@ button.delete
 }
 .icon
 {
-    font-size: x-large;
+    font-size: $font-size-lg;
     color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 0.5));
 }
 .admin.card-footer
