@@ -38,11 +38,11 @@ class ProfessionResource extends ModelResource
             Block::make([
                 ID::make()->sortable()->hideOnIndex(),
                 Text::make('Название', 'title'),
-                Slug::make('URL-имя', 'slug'),
+                Slug::make('URL-имя', 'slug')->from('title'),
                 CKEditor::make('Полное описание', 'description')->hideOnIndex(),
                 CKEditor::make('Короткое описание', 'short_description')->hideOnIndex(),
                 CKEditor::make('Пример', 'example')->hideOnIndex(),
-                Image::make('Изображение', 'image_path')->hideOnIndex()->dir('images/professions'),
+                Image::make('Изображение', 'image_path')->dir('images/professions'),
                 CKEditor::make('Виды деятельности', 'occupation')->hideOnIndex(),
                 CKEditor::make('История профессии', 'history')->hideOnIndex(),
                 CKEditor::make('Востребованные отрасли', 'demanded_industries')->hideOnIndex(),
@@ -62,6 +62,18 @@ class ProfessionResource extends ModelResource
      */
     public function rules(Model $item): array
     {
-        return [];
+        return [
+            'title' => ['required', 'string', 'min:3', 'max:50'],
+            'description' => ['required', 'string', 'min:10', 'max:10000'],
+            'short_description' => ['required', 'string', 'min:10', 'max:1000'],
+            'example' => ['required', 'string', 'min:10', 'max:3000'],
+            'image_path' => ['image', 'mimes:jpeg,jpg,png,gif,svg', 'max:1000'],
+            'occupation' => ['required', 'string', 'min:10', 'max:3000'],
+            'history' => ['required', 'string', 'min:10', 'max:3000'],
+            'demanded_industries' => ['required', 'string', 'min:10', 'max:3000'],
+            'career' => ['required', 'string', 'min:10', 'max:3000'],
+            'description_count_vacancies' => ['required', 'string', 'min:10', 'max:3000'],
+            'description_salary' => ['required', 'string', 'min:10', 'max:3000'],
+        ];
     }
 }

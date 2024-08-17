@@ -37,10 +37,10 @@ class SkillResource extends ModelResource
             Block::make([
                 ID::make()->sortable()->hideOnIndex(),
                 Text::make('Название', 'title'),
-                Slug::make('URL-имя', 'slug'),
+                Slug::make('URL-имя', 'slug')->from('title'),
                 CKEditor::make('Полное описание', 'description')->hideOnIndex(),
                 CKEditor::make('Короткое описание', 'short_description')->hideOnIndex(),
-                Image::make('Изображение', 'image_path')->hideOnIndex()->dir('images/skills'),
+                Image::make('Изображение', 'image_path')->dir('images/skills'),
             ]),
         ];
     }
@@ -53,6 +53,11 @@ class SkillResource extends ModelResource
      */
     public function rules(Model $item): array
     {
-        return [];
+        return [
+            'title' => ['required', 'string', 'min:3', 'max:50'],
+            'description' => ['required', 'string', 'min:10', 'max:10000'],
+            'short_description' => ['required', 'string', 'min:10', 'max:1000'],
+            'image_path' => ['image', 'mimes:jpeg,jpg,png,gif,svg', 'max:1000'],
+        ];
     }
 }
