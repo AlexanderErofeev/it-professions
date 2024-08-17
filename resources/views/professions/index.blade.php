@@ -15,7 +15,7 @@
                             <a href="{{ route('professions.show', $profession) }}"><img src="{{ Storage::url($profession->image_path) }}" alt="{{ $profession->title }}" class="card-img-top img-fluid"></a>
                             <div class="card-body">
                                 <a href="{{ route('professions.show', $profession) }}"><h5 class="card-title text-center">{{ $profession->title }}</h5></a>
-                                <p class="card-text">{{ $profession->short_description }}</p>
+                                <p class="card-text">{!! $profession->short_description !!}</p>
                             </div>
                             @auth
                                 <div class="admin card-footer">
