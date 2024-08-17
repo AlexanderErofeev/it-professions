@@ -31,7 +31,9 @@ class SkillController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required',
+            'title' => ['required', 'string', 'min:3', 'max:255'],
+            'slug' => ['required', 'alpha_num:ascii', 'max:255'],
+            'short_description' => ['required', 'string', 'min:3', 'max:255'],
             'image_path' => 'required|image|max:2048',
         ]);
         $imagePath = $request->file('image_path')->store('public/images/skills');
@@ -77,7 +79,6 @@ class SkillController extends Controller
             'description' => $request->get('description'),
             'image_path' => $image_path,
         ]));
-
         return redirect()->route('skills.index');
     }
     /**
