@@ -86,6 +86,7 @@ class SkillController extends Controller
      */
     public function destroy(Skill $skill)
     {
+        Storage::delete($skill->image_path);
         $skill->delete();
         return redirect()->route('skills.index');
     }
