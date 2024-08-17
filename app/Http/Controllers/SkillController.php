@@ -31,10 +31,10 @@ class SkillController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => ['required', 'string', 'min:3', 'max:255'],
-            'slug' => ['required', 'alpha_num:ascii', 'max:255'],
-            'short_description' => ['required', 'string', 'min:3', 'max:255'],
-            'image_path' => 'required|image|max:2048',
+            'title' => 'required|string|min:3|max:255',
+            'slug' => 'required|alpha_num:ascii|max:255',
+            'short_description' => 'string|min:5|max:255|nullable',
+            'image_path' => 'required|image|max:2048|dimensions:min_width=400,min_height=200,max_width=1000,max_height=1000',
         ]);
         $imagePath = $request->file('image_path')->store('public/images/skills');
         $skill = new Skill([

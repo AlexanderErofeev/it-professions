@@ -28,6 +28,7 @@
                 <input type="file" name="image_path" id="image_path" class="form-control">
                 <img src="{{ Storage::url($skill->image_path) }}" class="card-img-top" style="width: 250px;height: auto;" alt="{{ $skill->title }}">
             </div>
+            <br />
             <button type="submit" class="btn btn-primary">Сохранить</button>
         </form>
     </div>

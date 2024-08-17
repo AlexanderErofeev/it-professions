@@ -23,6 +23,9 @@
             <div class="form-group">
                 <label for="short_description">Короткое описание</label>
                 <textarea name="short_description" id="short_description" class="form-control @error('short_description') is-invalid @enderror @if (old('short_description')) is-valid @endif">{{ old('short_description') }}</textarea>
+                @error('short_description')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="description">Полное описание</label>
@@ -30,7 +33,7 @@
             </div>
             <div class="form-group">
                 <label for="image_path">Изображение</label>
-                <input type="file" name="image_path" id="image_path" class="form-control @error('image_path') is-invalid @enderror @if (old('image_path')) is-valid @endif">
+                <input type="file" name="image_path" value="{{ old('image_path') }}" id="image_path" class="form-control @error('image_path') is-invalid @enderror @if (old('image_path')) is-valid @endif">
                 @error('image_path')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
