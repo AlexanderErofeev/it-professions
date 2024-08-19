@@ -35,6 +35,7 @@ class SkillController extends Controller
             'slug' => 'required|alpha_num:ascii|max:255',
             'short_description' => 'string|min:5|max:255|nullable',
             'image_path' => 'required|image|max:2048|dimensions:min_width=400,min_height=200,max_width=1000,max_height=1000',
+            /* image - The file under validation must be an image (jpg, jpeg, png, bmp, gif, svg, or webp) */
         ]);
         $imagePath = $request->file('image_path')->store('public/images/skills');
         $skill = new Skill([
