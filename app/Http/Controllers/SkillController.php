@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SkillsStoreRequest;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 use App\Models\Skill;
+use Illuminate\View\View;
 
 
 class SkillController extends Controller
@@ -13,7 +16,7 @@ class SkillController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index() : View
     {
         $skills = Skill::all();
         return view('skills.index', compact('skills'));
@@ -21,22 +24,15 @@ class SkillController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create() : View
     {
         return view('skills.create');
     }
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(SkillsStoreRequest $request) : RedirectResponse
     {
-        $request->validate([
-            'title' => 'required|string|min:3|max:255',
-            'slug' => 'required|alpha_num:ascii|max:255',
-            'short_description' => 'string|min:5|max:255|nullable',
-            'image_path' => 'required|image|max:2048|dimensions:min_width=400,min_height=200,max_width=1000,max_height=1000',
-            /* image - The file under validation must be an image (jpg, jpeg, png, bmp, gif, svg, or webp) */
-        ]);
         $imagePath = $request->file('image_path')->store('public/images/skills');
         $skill = new Skill([
             'title' => $request->get('title'),
@@ -52,14 +48,14 @@ class SkillController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Skill $skill)
+    public function show(Skill $skill) : View
     {
         return view('skills.show', compact('skill'));
     }
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Skill $skill)
+    public function edit(Skill $skill) : View
     {
         return view('skills.edit', compact('skill'));
     }
@@ -67,7 +63,7 @@ class SkillController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Skill $skill)
+    public function update(Request $request, Skill $skill) : RedirectResponse
     {
         $image_path = $request->file('image_path');
         if (!is_null($image_path))
@@ -85,7 +81,7 @@ class SkillController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Skill $skill)
+    public function destroy(Skill $skill) : RedirectResponse
     {
         Storage::delete($skill->image_path);
         $skill->delete();
