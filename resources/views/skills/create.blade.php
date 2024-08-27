@@ -28,8 +28,11 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label for="description">Полное описание</label>
-                <textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror @if (old('description')) is-valid @endif">{{ old('description') }}</textarea>
+                <label for="ckeditor">Полное описание</label>
+                <textarea name="description" id="ckeditor" class="form-control @error('description') is-invalid @enderror @if (old('description')) is-valid @endif">{{ old('description') }}</textarea>
+                @error('description')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="image_path">Изображение</label>

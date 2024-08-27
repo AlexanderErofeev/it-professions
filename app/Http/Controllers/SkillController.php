@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SkillsUpdateRequest;
 use App\Http\Requests\SkillsStoreRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -63,7 +64,7 @@ class SkillController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Skill $skill) : RedirectResponse
+    public function update(SkillsUpdateRequest $request, Skill $skill) : RedirectResponse
     {
         $image_path = $request->file('image_path');
         if (!is_null($image_path))
