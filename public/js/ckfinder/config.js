@@ -3,7 +3,7 @@
  For licensing, see LICENSE.html or https://ckeditor.com/sales/license/ckfinder
  */
 
-var config = {};
+var config = { connectorPath: '/ckfinder/connector' };
 
 // Set your configuration options below.
 
@@ -12,3 +12,5 @@ var config = {};
 // config.skin = 'jquery-mobile';
 
 CKFinder.define( config );
+
+

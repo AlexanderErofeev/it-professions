@@ -16,6 +16,7 @@ use MoonShine\Contracts\Resources\ResourceContract;
 use MoonShine\Menu\MenuElement;
 use MoonShine\Pages\Page;
 use Closure;
+use Illuminate\Support\Facades\Vite;
 
 class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
 {
@@ -25,6 +26,15 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
     protected function resources(): array
     {
         return [];
+    }
+
+    public function boot(): void
+    {
+        parent::boot();
+
+        moonShineAssets()->add([
+            Vite::asset('public/js/ckfinder/ckfinder.js')
+        ]);
     }
 
     /**
