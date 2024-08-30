@@ -6,8 +6,8 @@ import { Autosave } from '@ckeditor/ckeditor5-autosave';
 import { BalloonEditor } from '@ckeditor/ckeditor5-editor-balloon';
 import { Bold, Code, Italic, Strikethrough, Subscript, Superscript, Underline } from '@ckeditor/ckeditor5-basic-styles';
 import { BlockQuote } from '@ckeditor/ckeditor5-block-quote';
-import { CKFinder, CKFinderUI, } from '@ckeditor/ckeditor5-ckfinder';
-import { CKFinderUploadAdapter} from '@ckeditor/ckeditor5-adapter-ckfinder';
+import { CKFinder, CKFinderUI } from '@ckeditor/ckeditor5-ckfinder';
+import { CKFinderUploadAdapter } from '@ckeditor/ckeditor5-adapter-ckfinder';
 import { Essentials } from '@ckeditor/ckeditor5-essentials';
 import { Heading } from '@ckeditor/ckeditor5-heading';
 import {
