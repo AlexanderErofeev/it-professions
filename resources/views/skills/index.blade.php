@@ -15,7 +15,7 @@
                             <a href="{{ route('skills.show', $skill) }}" class="text-decoration-none"><img src="{{ Storage::url($skill->image_path) }}" alt="{{ $skill->title }}" class="card-img-top p-4 img-fluid"></a>
                             <div class="card-body">
                                 <a href="{{ route('skills.show', $skill) }}" class="text-decoration-none"><h5 class="card-title text-center">{{ $skill->title }}</h5></a>
-                                <p class="card-text">{{ $skill->short_description }}</p>
+                                <p class="card-text">{!! $skill->short_description !!}</p>
                             </div>
                             @auth
                                 <div class="card-footer d-flex justify-content-between">

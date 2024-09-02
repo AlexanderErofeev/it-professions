@@ -180,8 +180,10 @@ ClassicEditor.defaultConfig = {
         console.error( error.stack );
     } );*/
 
-let ckeditior =document.querySelector( '#ckeditor' );
+let ckeditior = document.querySelectorAll( '.ckeditor' );
+if ( ckeditior.length !== 0 )
+    ckeditior.forEach((item) => {
+        ClassicEditor.create(item);
+    });
 
-if ( ckeditior !==null )
-    ClassicEditor.create(ckeditior);
 

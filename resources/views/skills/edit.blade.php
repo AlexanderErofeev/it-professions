@@ -23,14 +23,14 @@
             </div>
             <div class="form-group">
                 <label for="short_description">Короткое описание</label>
-                <textarea name="short_description" id="short_description" class="form-control @error('short_description') is-invalid @enderror @if (old('short_description')) is-valid @endif">@if (old('short_description')) {{ old('short_description') }} @else {{$skill->short_description}} @endif</textarea>
+                <textarea name="short_description" id="short_description" class="form-control ckeditor @error('short_description') is-invalid @enderror @if (old('short_description')) is-valid @endif">@if (old('short_description')) {{ old('short_description') }} @else {{$skill->short_description}} @endif</textarea>
                 @error('short_description')
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
             <div class="form-group">
-                <label for="ckeditor">Полное описание</label>
-                <textarea name="description" id="ckeditor" class="form-control @error('description') is-invalid @enderror @if (old('description')) is-valid @endif">@if (old('description')) {{ old('description') }} @else {{$skill->description}} @endif</textarea>
+                <label for="description">Полное описание</label>
+                <textarea name="description" id="description" class="form-control ckeditor @error('description') is-invalid @enderror @if (old('description')) is-valid @endif">@if (old('description')) {{ old('description') }} @else {{$skill->description}} @endif</textarea>
                 @error('description')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
