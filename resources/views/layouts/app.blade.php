@@ -82,8 +82,8 @@
             <div class="container">
                 <div class="row justify-content-between">
                     <div class="col-4">
-                        <div><img class="logo-img" src="{{ Vite::asset('resources/images/logo_img_1.svg') }}" alt="Логотип сайта Найти в IT" />
-                        <img class="logo-name" src="{{ Vite::asset('resources/images/logo_name_footer.svg') }}" alt="Найти в IT" /></div>
+                        <div><img class="d-inline-block align-middle" src="{{ Vite::asset('resources/images/logo_img_1.svg') }}" alt="Логотип сайта Найти в IT" width="71" height="60" />
+                        <img class="d-inline-block align-middle" src="{{ Vite::asset('resources/images/logo_name_footer.svg') }}" alt="Найти в IT" width="172" height="25" /></div>
                         <div class="py-3">Найти в IT - это сайт, который поможет пользователю ответить на все его вопросы о профессиях IT-сферы.<br />
                         Найди себя в IT
                         </div>
