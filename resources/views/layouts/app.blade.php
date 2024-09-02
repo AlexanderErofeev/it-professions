@@ -20,11 +20,11 @@
     @include('ckfinder::setup')
 </head>
 <body class="d-flex flex-column min-vh-100">
-    <nav class="navbar navbar-expand-md navbar-light bg-white">
+    <nav class="navbar navbar-expand-md navbar-light bg-white sticky-top border-bottom border-primary">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img class="logo-img" src="{{ Vite::asset('resources/images/logo_img_1.svg') }}" alt="Логотип сайта Найти в IT" />
-                    <img class="logo-name" src="{{ Vite::asset('resources/images/logo_name.svg') }}" alt="Найти в IT" />
+                    <img class="d-inline-block align-middle" src="{{ Vite::asset('resources/images/logo_img_1.svg') }}" alt="Логотип сайта Найти в IT" width="71" height="60" />
+                    <img class="d-inline-block align-middle" src="{{ Vite::asset('resources/images/logo_name.svg') }}" alt="Найти в IT" width="172" height="25" />
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -37,19 +37,19 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
-                        <li><a class="nav-link" href="{{ route('professions.index') }}">Профессии</a></li>
-                        <li><a class="nav-link" href="{{ route('skills.index') }}">Навыки</a></li>
+                        <li><a class="nav-link opacity-50-hover" href="{{ route('professions.index') }}">Профессии</a></li>
+                        <li><a class="nav-link opacity-50-hover" href="{{ route('skills.index') }}">Навыки</a></li>
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Войти') }}</a>
+                                    <a class="nav-link opacity-50-hover" href="{{ route('login') }}">{{ __('Войти') }}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Регистрация') }}</a>
+                                    <a class="nav-link opacity-50-hover" href="{{ route('register') }}">{{ __('Регистрация') }}</a>
                                 </li>
                             @endif
                         @else
@@ -76,9 +76,9 @@
             </div>
         </nav>
     <main class="py-4">
-            @yield('content')
-        </main>
-    <footer class="mt-auto">
+        @yield('content')
+    </main>
+    <footer class="mt-auto bg-secondary text-white py-4">
             <div class="container">
                 <div class="row justify-content-between">
                     <div class="col-4">
@@ -87,7 +87,7 @@
                         <div class="py-3">Найти в IT - это сайт, который поможет пользователю ответить на все его вопросы о профессиях IT-сферы.<br />
                         Найди себя в IT
                         </div>
-                        <div class="copyright">© IT-professions, 2022-{{ now()->year }}</div>
+                        <div class="text-info copyright">© IT-professions, 2022-{{ now()->year }}</div>
                     </div>
                     <div class="col-3">
                         <h3>Контакты:</h3>

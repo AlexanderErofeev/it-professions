@@ -4,7 +4,10 @@
 // Variables
 @import 'variables';
 
-// Bootstrap
+// Utilities
+@import 'utilities';
+
+//// Bootstrap
 @import 'bootstrap/scss/bootstrap';
 
 .btn-primary
@@ -15,19 +18,14 @@
 {
     @include button-outline-variant($btn-color, white, $btn-color, $btn-color);
 }
-
 body
 {
     background-image: url('/resources/images/background.webp');
 }
 footer
 {
-    background-color: #286485;
-    color:white;
-    padding: 2rem 0;
     .copyright
     {
-        color: #94c4de;
         font-size: $font-size-sm;
     }
     .btn-primary
@@ -36,90 +34,44 @@ footer
         width: 100%;
     }
 }
-
-.navbar
-{
-    border-bottom: #ffd2a9 solid 1px;
-    li:hover
-    {
-        opacity: 0.7;
-    }
-}
-.logo-img
-{
-    height: 60px;
-}
-.logo-name
-{
-    height: 25px;
-}
-.navbar-brand
-{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.container
-{
-    h1
-    {
-        margin-top: 2rem;
-    }
-    article
-    {
-        padding-top: 1rem;
-    }
-}
-button.delete
-{
-    border: none;
-    background-color: unset;
-}
 .icon
 {
     font-size: $font-size-lg;
     color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 0.5));
 }
-.admin.card-footer
-{
-    display: flex;
-    justify-content: space-between;
-}
 .card-img-top
 {
-    padding: 2rem 2rem 0 2rem;
     height: 200px;
-    object-fit: contain;
-    width: 100%;
 }
-.card-title
+.image-style-align-right img
 {
-    text-decoration: unset;
+    float: right;
+}
+.image-style-align-left img
+{
+    float: left;
+}
+.image-style-align-center img
+{
+    display: block;
+    margin: auto;
+}
+.image-style-block-align-right img
+{
+    margin-left:auto;
+    display: block;
+}
+.image-style-block-align-left img
+{
+    margin-right:auto;
+    display: block;
 }
 img
 {
     max-width: 100%;
-    height: auto;
-}
-.image-style-align-right
-{
-    float: right;
-}
-.image-style-align-left
-{
-    float: left;
-}
-.image-style-align-center
-{
-    margin:auto;
-}
-.image-style-block-align-right
-{
-    margin-left:auto;
-}
-.image-style-block-align-left
-{
-    margin-right:auto;
+    object-fit: contain;
+    display: block;
+    height: 100%;
 }
 figcaption
 {
