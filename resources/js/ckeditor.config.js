@@ -170,8 +170,7 @@ ClassicEditor.defaultConfig = {
     }
 };
 
-/*
-ClassicEditor
+/*ClassicEditor
     // Note that you do not have to specify the plugin and toolbar configuration — using defaults from the build.
     .create( document.querySelector( '#ckeditor' ))
     .then( editor => {
@@ -179,7 +178,10 @@ ClassicEditor
     } )
     .catch( error => {
         console.error( error.stack );
-    } );
-*/
-ClassicEditor.create( document.querySelector( '#ckeditor' ));
+    } );*/
+
+let ckeditior =document.querySelector( '#ckeditor' );
+
+if ( ckeditior !==null )
+    ClassicEditor.create(ckeditior);
 
