@@ -2,11 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Models\User;
-use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
-
-class SkillsUpdateRequest extends SkillsStoreRequest
+class UpdateSkillRequest extends StoreSkillRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +21,7 @@ class SkillsUpdateRequest extends SkillsStoreRequest
     {
         $rules = parent::rules();
         $rules['slug'] = $rules['slug'].','.$this->route('skill')->id;
-        $rules['image_path'] = str_replace('required|', '', $rules['image_path']);
+        $rules['image_path'] = 'sometimes';
         return $rules;
     }
 }

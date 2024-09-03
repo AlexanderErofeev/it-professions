@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\SkillsUpdateRequest;
-use App\Http\Requests\SkillsStoreRequest;
+use App\Http\Requests\UpdateSkillRequest;
+use App\Http\Requests\StoreSkillRequest;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 use App\Models\Skill;
@@ -32,9 +31,11 @@ class SkillController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(SkillsStoreRequest $request) : RedirectResponse
+    public function store(StoreSkillRequest $request) : RedirectResponse
     {
-        $imagePath = $request->file('image_path')->store('public/images/skills');
+        $imagePath = $request->file('image_path');
+        if (!is_null($imagePath))
+            $imagePath->store('public/images/skills');
         $skill = new Skill([
             'title' => $request->get('title'),
             'slug' => $request->get('slug'),
@@ -64,18 +65,18 @@ class SkillController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(SkillsUpdateRequest $request, Skill $skill) : RedirectResponse
+    public function update(UpdateSkillRequest $request, Skill $skill) : RedirectResponse
     {
-        $image_path = $request->file('image_path');
-        if (!is_null($image_path))
+        $imagePath = $request->file('image_path');
+        if (!is_null($imagePath))
             Storage::delete($skill->image_path);
-        $image_path = $image_path?->store('public/images/skills');
+        $imagePath = $imagePath?->store('public/images/skills');
         $skill->update(array_filter([
             'title' => $request->get('title'),
             'slug' => $request->get('slug'),
             'short_description' => $request->get('short_description'),
             'description' => $request->get('description'),
-            'image_path' => $image_path,
+            'image_path' => $imagePath,
         ]));
         return redirect()->route('skills.index');
     }
@@ -84,7 +85,7 @@ class SkillController extends Controller
      */
     public function destroy(Skill $skill) : RedirectResponse
     {
-        Storage::delete($skill->image_path);
+        if (!is_null($skill->image_path)) Storage::delete($skill->image_path);
         $skill->delete();
         return redirect()->route('skills.index');
     }

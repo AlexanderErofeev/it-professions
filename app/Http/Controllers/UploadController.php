@@ -10,8 +10,8 @@ class UploadController extends Controller
     {
         if ($request->hasFile('upload'))
         {
-            $saved_img=$request->file('upload')->store('public/images/editor');
-            $name = pathinfo($saved_img)['basename'];
+            $savedImg=$request->file('upload')->store('public/images/editor');
+            $name = pathinfo($savedImg)['basename'];
             return response()->json([
                 'url' => "/storage/images/editor/$name"
             ]);
