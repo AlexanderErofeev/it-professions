@@ -6,6 +6,7 @@ namespace App\Providers;
 
 use App\MoonShine\Resources\ProfessionResource;
 use App\MoonShine\Resources\SkillResource;
+use App\MoonShine\Resources\UserResource;
 use MoonShine\Providers\MoonShineApplicationServiceProvider;
 use MoonShine\MoonShine;
 use MoonShine\Menu\MenuGroup;
@@ -64,7 +65,8 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
             MenuGroup::make('DMK', [
                 MenuItem::make('Профессии', new ProfessionResource()),
                 MenuItem::make('Навыки', new SkillResource())
-            ])
+            ]),
+            MenuItem::make('Пользователи', new UserResource())
         ];
     }
 
