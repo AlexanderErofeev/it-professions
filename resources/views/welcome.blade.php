@@ -17,8 +17,13 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
-                    <div class="card-header"><a href="{{ route('professions.index') }}">Профессии</a></div>
-                    <div class="card-header"><a href="{{ route('skills.index') }}">Навыки</a></div>
+                    <div class="card-header">Разделы</div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><a href="{{ route('professions.index') }}">Профессии</a></li>
+                            <li class="list-group-item"><a href="{{ route('skills.index') }}">Навыки</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
     </div>
